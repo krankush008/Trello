@@ -1,4 +1,4 @@
-package com.example;
+import org.junit.Test;
 
 import com.example.Model.Project;
 import com.example.Model.Subproject;
@@ -6,8 +6,14 @@ import com.example.Model.Task;
 import com.example.Model.User;
 import com.example.Service.TrelloApp;
 
-public class Main {
-    public static void main(String[] args) {
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+public class TrelloAppTest {
+
+    @Test
+    public void testPerson() {
         TrelloApp trelloApp = new TrelloApp();
         User user1 = new User(1, "ank");
         User user2 = new User(9, "hub");
@@ -35,11 +41,19 @@ public class Main {
         project.setSubProject(subproject1);
         project.setSubProject(subproject2);
         trelloApp.addProject(project);
+        ArrayList<Task> tasks =  new ArrayList<>();
+        tasks.add(task3);
+        tasks.add(task5);
+        tasks.add(task6);
+        assertEquals(project, trelloApp.getProject(1));
         trelloApp.addTasks(1, 2, task7);
+        tasks.add(task7);
+        assertEquals(tasks, trelloApp.getTasksByProjectIdSubProjectId(1, 2));
         trelloApp.addUser(1, 2, 7, user6);
+        assertEquals(user6, trelloApp.getUser(1, 2, 7));
         trelloApp.printTasks(user6);
-        trelloApp.removeUser(1, 2, 7);
-        System.out.println("ankush12");
-        trelloApp.printTasks(user6);
+        ArrayList<Task> tasks1 =  new ArrayList<>();
+        tasks1.add(task7);
+        assertEquals(tasks1.get(0).getTaskId(), trelloApp.getTasksByUserId(6).get(0).getTaskId());
     }
 }

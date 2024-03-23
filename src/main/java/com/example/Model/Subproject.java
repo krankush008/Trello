@@ -7,7 +7,8 @@ public class Subproject {
     Integer id;
     ArrayList<Task> tasks;
 
-    public Subproject(){
+    public Subproject(Integer id){
+        this.id = id;
         this.tasks =  new ArrayList<>();
     }
 
@@ -26,4 +27,13 @@ public class Subproject {
     public void setTask(Task task){
         tasks.add(task);
     }
+
+    public void setUser(Integer taskId, User user){
+        for(int i=0; i<tasks.size(); i++){
+            if(tasks.get(i).getTaskId() == taskId){
+                tasks.get(i).setUser(user);
+            }
+        }
+    }
+
 }

@@ -19,7 +19,7 @@ public class ProjectManager {
     }
 
     public Project getProject(Integer projectId){
-        Project project = new Project();
+        Project project = new Project(projectId);
         for(int i=0; i<projects.size(); i++){
             if(projects.get(i).getId() == projectId){
                 project = projects.get(i);
