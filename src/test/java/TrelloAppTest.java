@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class TrelloAppTest {
 
     @Test
-    public void testPerson() {
+    public void trelloAppTest() {
         TrelloApp trelloApp = new TrelloApp();
         User user1 = new User(1, "ank");
         User user2 = new User(9, "hub");
